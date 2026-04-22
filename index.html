@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RENACE · OncoVitae</title>
+<meta name="description" content="El programa de 90 días que trabaja lo que rodea tu tratamiento oncológico. Nutrición, sistema nervioso, intestino, miedo, entorno. Todo lo que el sistema sanitario no tiene tiempo de cubrir." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ========== TOKENS ========== */
+  :root{
+    --teal:#007A6E;
+    --teal-d:#005F56;
+    --teal-dd:#003D36;
+    --teal-l:#00A899;
+    --teal-bg:#EAF6F5;
+    --teal-bg2:#D0EDEA;
+    --gold:#C88600;
+    --gold-d:#A66F00;
+    --gold-bg:#FFF8E6;
+    --blue:#2E5EAA;
+    --blue-bg:#E8EFFA;
+    --purple:#6B4FA0;
+    --purple-bg:#EFEAF7;
+    --dark:#1A1A2E;
+    --gray:#555565;
+    --gray-l:#F5F5F8;
+    --line:#E5E5EA;
+    --white:#FFFFFF;
+    --serif:'Playfair Display','Times New Roman',serif;
+    --sans:'Inter',system-ui,sans-serif;
+    --sh:0 4px 32px rgba(0,122,110,.10);
+    --sh-l:0 2px 14px rgba(0,122,110,.06);
+    --sh-gold:0 4px 20px rgba(200,134,0,.18);
+    --r:14px;
+    --r-s:10px;
+    --maxw:1180px;
+    --readw:680px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.7;
+    color:var(--dark);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  img{max-width:100%;display:block}
+
+  /* ========== TYPOGRAPHY ========== */
+  h1,h2,h3,h4{font-family:var(--serif);color:var(--dark);font-weight:600;letter-spacing:-0.01em;line-height:1.18}
+  h1{font-size:clamp(2.4rem,5.4vw,4.1rem);font-weight:700}
+  h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:1.2rem}
+  h3{font-size:1.45rem;margin-bottom:0.55rem}
+  h4{font-size:1.1rem;margin-bottom:0.4rem;font-weight:600}
+  p{margin-bottom:1rem;color:var(--gray)}
+  strong{color:var(--dark);font-weight:600}
+  em{font-style:italic}
+
+  .eyebrow{
+    display:inline-block;font-family:var(--sans);font-size:0.74rem;font-weight:600;
+    letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);
+    background:var(--teal-bg);padding:0.5rem 1rem;border-radius:999px;
+    margin-bottom:1.2rem;
+  }
+  .lead{font-size:1.1rem;color:var(--gray);line-height:1.75}
+
+  /* ========== LAYOUT ========== */
+  section{padding:clamp(4.5rem,8vw,7rem) 1.5rem}
+  .wrap{max-width:var(--maxw);margin:0 auto}
+  .narrow{max-width:var(--readw);margin:0 auto}
+  .center{text-align:center}
+
+  /* ========== NAV ========== */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    padding:1.1rem 1.5rem;
+  }
+  .nav-i{
+    max-width:var(--maxw);margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{font-family:var(--serif);font-size:1.45rem;color:var(--dark);letter-spacing:0.01em;font-weight:700}
+  .brand span{color:var(--teal)}
+  .nav-cta{
+    font-size:0.88rem;font-weight:600;color:var(--white);
+    background:var(--teal);padding:0.6rem 1.25rem;border-radius:999px;
+    transition:all .25s ease;
+  }
+  .nav-cta:hover{background:var(--teal-d);transform:translateY(-1px)}
+
+  /* ========== BUTTONS ========== */
+  .btn{
+    display:inline-block;font-family:var(--sans);font-weight:600;
+    background:var(--teal);color:var(--white);padding:1.05rem 2.3rem;
+    letter-spacing:0.02em;font-size:0.98rem;border-radius:999px;
+    border:none;transition:all .25s ease;cursor:pointer;box-shadow:var(--sh);
+  }
+  .btn:hover{background:var(--teal-d);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,122,110,.25)}
+  .btn-gold{
+    background:var(--gold);color:var(--white);box-shadow:var(--sh-gold);
+  }
+  .btn-gold:hover{background:var(--gold-d);box-shadow:0 8px 28px rgba(200,134,0,.30)}
+  .btn-outline{
+    background:transparent;color:var(--white);border:2px solid var(--white);
+    box-shadow:none;
+  }
+  .btn-outline:hover{background:var(--white);color:var(--teal-d);transform:translateY(-2px);box-shadow:none}
+
+  /* ========== HERO ========== */
+  .hero{
+    background:linear-gradient(140deg,var(--teal-dd) 0%,var(--teal-d) 40%,var(--teal) 100%);
+    color:var(--white);
+    padding:clamp(5rem,10vw,9rem) 1.5rem clamp(5rem,10vw,8rem);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at top left,rgba(200,134,0,.10),transparent 55%),
+      radial-gradient(ellipse at bottom right,rgba(0,168,153,.18),transparent 55%);
+    pointer-events:none;
+  }
+  .hero > *{position:relative;z-index:1}
+  .hero .eyebrow{
+    background:rgba(255,255,255,.14);color:var(--white);
+    border:1px solid rgba(255,255,255,.22);
+  }
+  .hero h1{max-width:22ch;margin:0 auto 1.6rem;color:var(--white)}
+  .hero h1 em{font-style:italic;color:#F3D483;font-weight:500}
+  .hero .lead{max-width:48ch;margin:0 auto 2.6rem;color:rgba(255,255,255,.86)}
+  .hero-meta{
+    font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;
+    color:rgba(255,255,255,.7);margin-top:2rem;
+  }
+
+  /* ========== PROOF BAR ========== */
+  .proof{
+    background:var(--teal-bg);
+    padding:2.6rem 1.5rem;
+  }
+  .proof-g{
+    max-width:var(--maxw);margin:0 auto;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1.4rem;text-align:center;
+  }
+  .proof-g strong{
+    display:block;font-family:var(--serif);font-size:2.4rem;font-weight:700;
+    color:var(--teal-d);line-height:1;margin-bottom:0.45rem;
+  }
+  .proof-g span{
+    font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);font-weight:500;
+  }
+
+  /* ========== OPENING ========== */
+  .opening{background:var(--white)}
+  .opening .narrow p{font-size:1.05rem;margin-bottom:1.1rem;color:var(--gray)}
+  .opening .pull{
+    font-family:var(--serif);font-style:italic;font-size:1.55rem;font-weight:500;
+    color:var(--teal-d);text-align:center;line-height:1.4;
+    margin:2.6rem 0;max-width:32ch;margin-left:auto;margin-right:auto;
+    padding:1.4rem 0;border-top:1px solid var(--teal-bg2);border-bottom:1px solid var(--teal-bg2);
+  }
+  .opening .note{
+    margin-top:2.4rem;padding:1.6rem 1.8rem;
+    background:var(--gold-bg);border-left:4px solid var(--gold);border-radius:var(--r-s);
+    font-size:0.98rem;color:var(--dark);line-height:1.7;
+  }
+  .opening .note a{color:var(--gold-d);font-weight:600;border-bottom:1px solid var(--gold);padding-bottom:1px}
+
+  /* ========== PROBLEM ========== */
+  .problem{background:var(--gray-l)}
+  .problem-g{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:1.5rem;margin-top:3.2rem;
+  }
+  .p-card{
+    background:var(--white);padding:2rem 1.8rem;border-radius:var(--r);
+    box-shadow:var(--sh-l);transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .p-card:hover{transform:translateY(-4px);box-shadow:var(--sh)}
+  .p-card .ico{
+    font-size:2rem;margin-bottom:0.9rem;display:inline-flex;
+    width:54px;height:54px;align-items:center;justify-content:center;
+    background:var(--teal-bg);border-radius:var(--r-s);
+  }
+  .p-card h3{font-size:1.1rem;line-height:1.35;margin-bottom:0.7rem;color:var(--dark)}
+  .p-card p{font-size:0.94rem;color:var(--gray);margin:0;line-height:1.65}
+
+  /* ========== MISTAKE ========== */
+  .mistake{background:var(--white)}
+  .mistake .narrow p{font-size:1.06rem;line-height:1.75}
+  .mistake .center-line{
+    font-family:var(--serif);font-size:1.65rem;color:var(--teal-d);font-weight:500;
+    text-align:center;line-height:1.45;margin:2.6rem 0;font-style:italic;
+  }
+
+  /* ========== PNIE ========== */
+  .pnie{
+    background:linear-gradient(160deg,var(--teal-dd) 0%,var(--teal-d) 60%,var(--teal) 100%);
+    color:var(--white);position:relative;overflow:hidden;
+  }
+  .pnie::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at top right,rgba(200,134,0,.12),transparent 50%);
+    pointer-events:none;
+  }
+  .pnie > *{position:relative;z-index:1}
+  .pnie h2,.pnie h3,.pnie h4{color:var(--white)}
+  .pnie .eyebrow{background:rgba(255,255,255,.14);color:var(--white);border:1px solid rgba(255,255,255,.22)}
+  .pnie .narrow p{font-size:1.06rem;color:rgba(255,255,255,.88);line-height:1.75}
+  .pnie .narrow p strong{color:var(--white)}
+  .pnie .pull{
+    font-family:var(--serif);font-style:italic;font-size:1.5rem;font-weight:500;
+    color:#F3D483;line-height:1.45;margin:2.4rem 0;
+    padding-left:1.6rem;border-left:3px solid var(--gold);
+  }
+  .pillars{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:1.2rem;margin-top:3rem;
+  }
+  .pill{
+    padding:1.8rem 1.4rem;border-radius:var(--r);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    transition:all .3s ease;
+  }
+  .pill:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+  .pill .num{
+    font-family:var(--serif);font-size:1.1rem;font-weight:600;
+    letter-spacing:0.18em;color:#F3D483;margin-bottom:0.6rem;
+  }
+  .pill h4{font-size:1.18rem;color:var(--white);margin-bottom:0.5rem}
+  .pill p{font-size:0.9rem;color:rgba(255,255,255,.72);line-height:1.55;margin:0}
+
+  /* ========== PROGRAM ========== */
+  .program{background:var(--white)}
+  .months{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:1.8rem;margin-top:3.4rem;
+  }
+  .month{
+    background:var(--white);border-radius:var(--r);
+    box-shadow:var(--sh-l);overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .month:hover{transform:translateY(-4px);box-shadow:var(--sh)}
+  .month-head{
+    padding:1.6rem 1.8rem 1.4rem;color:var(--white);
+  }
+  .month-1 .month-head{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-d) 100%)}
+  .month-2 .month-head{background:linear-gradient(135deg,var(--blue) 0%,#1D4583 100%)}
+  .month-3 .month-head{background:linear-gradient(135deg,var(--purple) 0%,#4E3780 100%)}
+  .month-num{
+    font-family:var(--sans);font-size:0.76rem;font-weight:600;
+    letter-spacing:0.22em;text-transform:uppercase;
+    color:rgba(255,255,255,.75);margin-bottom:0.5rem;
+  }
+  .month h3{font-size:1.5rem;margin-bottom:0.4rem;color:var(--white)}
+  .month .month-sub{
+    font-size:0.92rem;color:rgba(255,255,255,.82);line-height:1.55;margin:0;
+  }
+  .month-body{padding:1.6rem 1.8rem 1.8rem;flex:1}
+  .mod{
+    padding:0.85rem 0;border-top:1px solid var(--line);
+    display:grid;grid-template-columns:72px 1fr;gap:0.8rem;align-items:start;
+  }
+  .mod:first-of-type{border-top:none;padding-top:0}
+  .mod-tag{
+    font-family:var(--sans);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--teal);padding-top:3px;
+  }
+  .month-2 .mod-tag{color:var(--blue)}
+  .month-3 .mod-tag{color:var(--purple)}
+  .mod p{font-size:0.93rem;line-height:1.55;color:var(--gray);margin:0}
+  .mod p strong{color:var(--dark);font-weight:600}
+
+  /* ========== INCLUDES ========== */
+  .includes{background:var(--teal-bg)}
+  .inc-list{
+    max-width:900px;margin:3rem auto 0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:1rem;
+  }
+  .inc{
+    background:var(--white);padding:1.4rem 1.5rem;border-radius:var(--r);
+    display:grid;grid-template-columns:48px 1fr;gap:0.9rem;
+    box-shadow:var(--sh-l);transition:transform .3s ease;
+  }
+  .inc:hover{transform:translateY(-2px)}
+  .inc .mark{
+    font-size:1.4rem;display:inline-flex;
+    width:44px;height:44px;align-items:center;justify-content:center;
+    background:var(--teal-bg);border-radius:10px;
+  }
+  .inc h4{font-size:1rem;margin-bottom:0.25rem;color:var(--dark)}
+  .inc p{font-size:0.9rem;color:var(--gray);margin:0;line-height:1.55}
+
+  /* ========== AUTHOR ========== */
+  .author{background:var(--white)}
+  .author-i{
+    max-width:980px;margin:0 auto;
+    display:grid;grid-template-columns:260px 1fr;gap:3.5rem;align-items:start;
+  }
+  .author-photo{
+    aspect-ratio:3/4;background:var(--gray-l);
+    overflow:hidden;position:relative;border-radius:var(--r);
+    box-shadow:var(--sh);
+  }
+  .author-photo img{
+    width:100%;height:100%;object-fit:cover;object-position:center top;
+  }
+  .author-photo .ph-label{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:var(--gray);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+  }
+  .author-c h2{font-size:2.3rem;margin-bottom:0.3rem}
+  .author-c .role{
+    font-size:0.8rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;
+    color:var(--teal);margin-bottom:1.6rem;
+  }
+  .author-c p{font-size:1rem;line-height:1.78;margin-bottom:1rem;color:var(--gray)}
+  .author-c p strong{color:var(--dark);font-weight:600}
+  .author-c .blockquote{
+    font-family:var(--serif);font-style:italic;font-size:1.22rem;font-weight:500;
+    color:var(--teal-d);line-height:1.5;padding:0.3rem 0 0.3rem 1.4rem;
+    border-left:3px solid var(--gold);margin:1.8rem 0;
+  }
+  .badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+  .badge{
+    background:var(--teal-bg);color:var(--teal-d);
+    padding:0.4rem 0.95rem;font-size:0.78rem;font-weight:500;
+    border-radius:999px;
+  }
+  @media(max-width:720px){
+    .author-i{grid-template-columns:1fr;gap:2rem}
+    .author-photo{max-width:280px;margin:0 auto}
+  }
+
+  /* ========== MID CTA ========== */
+  .mid-cta{
+    background:linear-gradient(135deg,var(--dark) 0%,#2A2A44 100%);
+    color:var(--white);
+    padding:4.2rem 1.5rem;text-align:center;position:relative;overflow:hidden;
+  }
+  .mid-cta::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at center,rgba(0,122,110,.2),transparent 60%);
+  }
+  .mid-cta > *{position:relative;z-index:1}
+  .mid-cta h3{
+    font-size:clamp(1.5rem,3vw,2rem);color:var(--white);font-family:var(--serif);
+    max-width:30ch;margin:0 auto 1rem;line-height:1.3;font-weight:600;
+  }
+  .mid-cta p{
+    font-size:1.02rem;color:rgba(255,255,255,.78);
+    max-width:40ch;margin:0 auto 2rem;
+  }
+
+  /* ========== RESULTS ========== */
+  .results{background:var(--white)}
+  .res-g{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:1.6rem;margin-top:3rem;
+  }
+  .res-c{
+    background:var(--gray-l);padding:2rem 1.8rem;border-radius:var(--r);
+    transition:all .3s ease;
+  }
+  .res-c:hover{background:var(--teal-bg);transform:translateY(-3px)}
+  .res-c .ico{
+    font-size:1.7rem;margin-bottom:0.9rem;display:inline-flex;
+    width:52px;height:52px;align-items:center;justify-content:center;
+    background:var(--white);border-radius:var(--r-s);box-shadow:var(--sh-l);
+  }
+  .res-c p{font-size:0.98rem;line-height:1.68;color:var(--gray);margin:0}
+  .res-c p strong{color:var(--dark);font-weight:600}
+  .res-note{
+    background:var(--gold-bg);padding:1.8rem 2rem;border-radius:var(--r);
+    margin:2.4rem auto 0;font-size:0.98rem;border-left:4px solid var(--gold);
+    color:var(--dark);line-height:1.72;max-width:840px;
+  }
+  .res-note strong{color:var(--dark);font-weight:600}
+
+  /* ========== WHOM ========== */
+  .whom{background:var(--teal-bg)}
+  .whom-g{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:3rem;
+    max-width:960px;margin-left:auto;margin-right:auto;margin-top:3rem;
+  }
+  @media(max-width:660px){.whom-g{grid-template-columns:1fr}}
+  .whom-b{padding:2.2rem 2rem;background:var(--white);border-radius:var(--r);box-shadow:var(--sh-l)}
+  .whom-b.yes{border-top:4px solid var(--teal)}
+  .whom-b.no{border-top:4px solid var(--gray)}
+  .whom-b h3{font-size:1.3rem;margin-bottom:1.3rem;display:flex;align-items:center;gap:0.6rem}
+  .whom-b.yes h3{color:var(--teal-d)}
+  .whom-b.no h3{color:var(--gray)}
+  .whom-b h3 .ico{font-size:1.4rem}
+  .whom-b ul li{
+    padding:0.7rem 0 0.7rem 1.8rem;position:relative;
+    border-bottom:1px solid var(--line);font-size:0.96rem;line-height:1.55;color:var(--gray);
+  }
+  .whom-b ul li:last-child{border-bottom:none}
+  .whom-b.yes li::before{
+    content:"✓";position:absolute;left:0;top:0.7rem;
+    color:var(--teal);font-size:1rem;font-weight:700;
+  }
+  .whom-b.no li::before{
+    content:"×";position:absolute;left:0.15rem;top:0.65rem;
+    color:var(--gray);font-size:1.15rem;font-weight:600;
+  }
+
+  /* ========== PRICING ========== */
+  .pricing{background:var(--white);text-align:center}
+  .price-summary{
+    max-width:680px;margin:3rem auto 2rem;padding:1.8rem 2rem;
+    background:var(--teal-bg);border-radius:var(--r);text-align:left;
+  }
+  .price-summary .label{
+    font-family:var(--sans);font-size:0.74rem;font-weight:700;
+    letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;
+  }
+  .price-summary .grid2{
+    display:grid;grid-template-columns:1fr 1fr;gap:0.6rem 1.4rem;
+  }
+  .price-summary .grid2 span{font-size:0.94rem;color:var(--dark);display:flex;align-items:flex-start;gap:0.5rem}
+  .price-summary .grid2 span::before{content:"✓";color:var(--teal);font-weight:700;flex-shrink:0}
+  @media(max-width:560px){.price-summary .grid2{grid-template-columns:1fr}}
+
+  .price-card{
+    background:linear-gradient(165deg,var(--teal-dd) 0%,var(--teal-d) 55%,var(--teal) 100%);
+    color:var(--white);
+    max-width:680px;margin:0 auto;padding:3.2rem 2.4rem;text-align:center;
+    border-radius:calc(var(--r) + 4px);
+    box-shadow:0 24px 60px rgba(0,122,110,.25);
+    position:relative;overflow:hidden;
+  }
+  .price-card::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at top left,rgba(200,134,0,.15),transparent 55%);
+    pointer-events:none;
+  }
+  .price-card > *{position:relative;z-index:1}
+  .price-card .edition{
+    display:inline-block;font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;
+    color:#F3D483;margin-bottom:1rem;font-weight:600;
+    background:rgba(255,255,255,.08);padding:0.4rem 1rem;border-radius:999px;
+  }
+  .price-card h3{font-size:1.45rem;color:var(--white);margin-bottom:1.6rem;font-weight:600}
+  .price-num{
+    font-family:var(--serif);font-size:clamp(3.6rem,7vw,5.2rem);font-weight:700;
+    color:var(--white);line-height:1;margin-bottom:0.7rem;
+  }
+  .price-num .cur{font-size:0.5em;margin-right:0.2em;opacity:.75;color:#F3D483}
+  .price-n{
+    font-size:0.84rem;letter-spacing:0.1em;text-transform:uppercase;
+    color:rgba(255,255,255,.65);margin-bottom:1.4rem;
+  }
+  .price-pay{
+    font-size:0.92rem;color:rgba(255,255,255,.88);
+    padding:0.9rem 1.1rem;border:1px solid rgba(255,255,255,.2);
+    border-radius:var(--r-s);margin-bottom:2rem;
+  }
+  .price-pay strong{color:var(--white);font-weight:600}
+  .price-ul{text-align:left;margin-bottom:2.2rem}
+  .price-ul h4{
+    font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;
+    color:#F3D483;font-weight:700;margin-bottom:0.9rem;font-family:var(--sans);
+  }
+  .price-ul ul li{
+    padding:0.6rem 0 0.6rem 1.6rem;position:relative;
+    border-top:1px solid rgba(255,255,255,.14);
+    font-size:0.94rem;color:rgba(255,255,255,.92);line-height:1.55;
+  }
+  .price-ul ul li:first-child{border-top:1px solid rgba(255,255,255,.22)}
+  .price-ul ul li::before{
+    content:"✓";position:absolute;left:0;top:0.6rem;
+    color:#F3D483;font-size:0.85rem;font-weight:700;
+  }
+  .price-card .btn{width:100%;justify-content:center}
+  .price-cta-note{
+    font-size:0.82rem;color:rgba(255,255,255,.6);
+    margin:1rem 0 1.4rem;line-height:1.55;
+  }
+  .selection-note{
+    background:rgba(255,255,255,.07);padding:1.2rem 1.4rem;border-radius:var(--r-s);
+    font-size:0.9rem;color:rgba(255,255,255,.9);line-height:1.62;
+    text-align:left;margin-top:1.2rem;
+  }
+  .selection-note strong{color:var(--white);font-weight:600}
+  .spots{
+    margin-top:1.4rem;font-size:0.84rem;
+    color:rgba(255,255,255,.82);
+    display:inline-flex;align-items:center;gap:0.5rem;
+    background:rgba(200,134,0,.18);padding:0.55rem 1.1rem;border-radius:999px;
+    border:1px solid rgba(200,134,0,.35);
+  }
+  .spots strong{color:#F3D483;font-weight:600}
+
+  /* ========== HONESTY ========== */
+  .honesty{background:var(--gray-l)}
+  .honesty .narrow p{font-size:1.05rem;line-height:1.75}
+  .honesty .h-box{
+    background:var(--white);padding:1.7rem 1.9rem;
+    border-left:4px solid var(--gold);border-radius:var(--r-s);
+    margin:1.9rem 0;font-size:1rem;line-height:1.7;color:var(--dark);
+    box-shadow:var(--sh-l);
+  }
+  .honesty strong{color:var(--dark);font-weight:600}
+
+  /* ========== FAQ ========== */
+  .faq{background:var(--white)}
+  .faq-list{max-width:780px;margin:3rem auto 0}
+  .faq-item{
+    background:var(--gray-l);border-radius:var(--r);margin-bottom:0.8rem;
+    overflow:hidden;transition:background .25s ease;
+  }
+  .faq-item[data-open="true"]{background:var(--teal-bg)}
+  .faq-q{
+    cursor:pointer;border:none;background:none;width:100%;
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    padding:1.25rem 1.5rem;text-align:left;
+    font-family:var(--serif);font-size:1.1rem;color:var(--dark);font-weight:600;
+    line-height:1.35;
+  }
+  .faq-q:hover{color:var(--teal-d)}
+  .faq-q .ic{
+    flex-shrink:0;width:28px;height:28px;border-radius:50%;
+    background:var(--white);color:var(--teal);
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:1.2rem;font-weight:600;transition:transform .3s ease;
+    box-shadow:var(--sh-l);
+  }
+  .faq-item[data-open="true"] .faq-q .ic{transform:rotate(45deg);background:var(--teal);color:var(--white)}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;
+    padding:0 1.5rem;color:var(--gray);font-size:0.98rem;line-height:1.7;
+  }
+  .faq-item[data-open="true"] .faq-a{max-height:400px;padding:0 1.5rem 1.35rem}
+
+  /* ========== FINAL ========== */
+  .final{
+    background:linear-gradient(155deg,var(--teal-dd) 0%,var(--teal-d) 55%,var(--teal) 100%);
+    color:var(--white);text-align:center;position:relative;overflow:hidden;
+  }
+  .final::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at top right,rgba(200,134,0,.15),transparent 55%),
+      radial-gradient(ellipse at bottom left,rgba(0,168,153,.18),transparent 55%);
+  }
+  .final > *{position:relative;z-index:1}
+  .final h2{color:var(--white);max-width:26ch;margin:0 auto 1.3rem}
+  .final h2 em{color:#F3D483;font-style:italic;font-weight:500}
+  .final p{font-size:1.02rem;color:rgba(255,255,255,.82);max-width:44ch;margin:0 auto 2rem}
+  .final .btn-gold{margin-top:0.6rem}
+  .final .meta{
+    margin-top:1.8rem;font-size:0.78rem;letter-spacing:0.16em;
+    text-transform:uppercase;color:rgba(255,255,255,.55);
+  }
+
+  /* ========== FOOTER ========== */
+  footer{
+    background:var(--dark);color:rgba(255,255,255,.7);
+    padding:3rem 1.5rem 2.4rem;text-align:center;font-size:0.88rem;
+  }
+  footer .brand{color:var(--white);display:block;margin-bottom:0.6rem}
+  footer .brand span{color:var(--teal-l)}
+  footer p{color:rgba(255,255,255,.6);margin-bottom:0.3rem;font-size:0.84rem}
+  .foot-links{
+    display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap;
+    margin:1rem 0 1.3rem;
+  }
+  .foot-links a{
+    color:rgba(255,255,255,.75);transition:color .2s;
+  }
+  .foot-links a:hover{color:var(--teal-l)}
+  footer .small{opacity:.45;font-size:0.78rem;margin-top:1rem}
+
+  /* ========== REVEAL ANIMATIONS ========== */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.is-visible{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav>
+  <div class="nav-i">
+    <div class="brand">Onco<span>Vitae</span></div>
+    <a href="https://tally.so/r/vGx5gQ" target="_blank" rel="noopener" class="nav-cta">Solicitar plaza</a>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Primera edición · Inicio: 01.06.2026</div>
+    <h1>Atravesar tu proceso oncológico <em>con dirección, no a ciegas.</em></h1>
+    <p class="lead">RENACE es el acompañamiento que sostiene lo que la consulta médica no tiene en cuenta: cómo comes, cómo piensas, cómo te sientes, cómo te relacionas y hacia dónde diriges tu vida mientras atraviesas la enfermedad.</p>
+    <a href="https://tally.so/r/vGx5gQ" target="_blank" rel="noopener" class="btn btn-gold">Solicitar mi plaza</a>
+    <div class="hero-meta">Grupos de máximo 12 personas</div>
+  </div>
+</section>
+
+<!-- ========== PROOF BAR ========== -->
+<div class="proof">
+  <div class="proof-g">
+    <div><strong>90</strong><span>Días de proceso</span></div>
+    <div><strong>12</strong><span>Plazas máximas</span></div>
+    <div><strong>5</strong><span>Pilares integrados</span></div>
+    <div><strong>3</strong><span>Sesiones individuales</span></div>
+  </div>
+</div>
+
+<!-- ========== OPENING ========== -->
+<section class="opening" id="inicio">
+  <div class="narrow reveal">
+    <div class="eyebrow">El punto de partida</div>
+    <h2>Probablemente ya estás haciendo cosas. Y aun así algo no termina de encajar.</h2>
+    <p>Hay un momento en mitad del proceso en que todo está hecho y nada está claro. El tratamiento avanza. Las citas se cumplen. La información se acumula. Y por dentro, la sensación es la misma cada mañana: hacer cosas y no sentir dirección.</p>
+
+    <p class="pull">“No es falta de voluntad. No es falta de información. Es falta de una estructura clara.”</p>
+
+    <p>Sales de consulta con un protocolo y, a la vez, con una vida que no sabes cómo ordenar mientras el tratamiento sucede. Recibes consejos contradictorios. Lees, buscas, preguntas, vuelves al mismo punto.</p>
+    <p>Y luego está la parte que casi no se nombra. La cabeza que no para. Las emociones que llegan en oleadas. Las conversaciones difíciles con tu pareja, con tu familia. La sensación de estar rodeada y, a la vez, sola. La pregunta silenciosa de qué sentido tiene todo esto.</p>
+    <p>El sistema, por diseño, te da un tratamiento. El proceso —la experiencia humana de atravesar esto entera— no te lo da nadie.</p>
+
+    <div class="note">Quien ha diseñado esto leyó la palabra <strong>“linfoma”</strong> en su propio TAC hace 10 meses. Pasó 6 meses en quimioterapia. Lo que leerás más abajo no es teoría: es lo que construyó para no quedarse sin herramientas. <a href="#quico">Leer su historia</a></div>
+  </div>
+</section>
+
+<!-- ========== PROBLEM ========== -->
+<section class="problem" id="problema">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">El problema real</div>
+      <h2>Lo que el diagnóstico no te dice</h2>
+      <p class="lead" style="max-width:46ch;margin:0 auto">Esto no es lo que te cuenta el sistema sanitario. Pero es lo que está pasando.</p>
+    </div>
+    <div class="problem-g">
+      <div class="p-card reveal">
+        <div class="ico">🍽️</div>
+        <h3>“Sé que tengo que comer bien. Pero nadie me dice cómo para mi caso.”</h3>
+        <p>Las guías genéricas ignoran tu tipo de cáncer, tu tratamiento, tu estado inflamatorio real. Lo que funciona para uno puede ser irrelevante para ti.</p>
+      </div>
+      <div class="p-card reveal">
+        <div class="ico">🧠</div>
+        <h3>“Sé que el estrés me perjudica. Y no puedo parar de tenerlo.”</h3>
+        <p>El cortisol elevado de forma sostenida suprime las células que vigilan las tumorales. Nadie te enseña a regularlo porque nadie tiene tiempo de hacerlo.</p>
+      </div>
+      <div class="p-card reveal">
+        <div class="ico">🌀</div>
+        <h3>“Cada artículo nuevo contradice el anterior. Ya no sé qué creer.”</h3>
+        <p>Sin un orden que integre todo, la información se convierte en ruido. Y el ruido, en ansiedad.</p>
+      </div>
+      <div class="p-card reveal">
+        <div class="ico">🤝</div>
+        <h3>“No quiero preocupar a nadie. Así que lo proceso sola.”</h3>
+        <p>La soledad oncológica aumenta la inflamación sistémica. No es metáfora: tiene marcadores medibles. Y casi nadie lo trabaja.</p>
+      </div>
+      <div class="p-card reveal">
+        <div class="ico">🧭</div>
+        <h3>“El diagnóstico me quitó el suelo. Y no he encontrado dónde pisar.”</h3>
+        <p>Cuando desaparece el propósito, el sistema nervioso entra en modo supervivencia permanente. El cuerpo lo nota en todo lo demás.</p>
+      </div>
+      <div class="p-card reveal">
+        <div class="ico">📋</div>
+        <h3>El sistema sanitario trata el tumor. No la persona.</h3>
+        <p>No porque no quiera. Porque no tiene tiempo. El oncólogo hace lo que puede en 15 minutos. El resto queda sin cubrir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MISTAKE ========== -->
+<section class="mistake">
+  <div class="narrow reveal">
+    <div class="eyebrow">El error más frecuente</div>
+    <h2>No es falta de voluntad. Es falta de dirección.</h2>
+    <p>El error más común no es lo que haces. Es todo lo que estás sosteniendo sin darte cuenta.</p>
+    <p>Decisiones constantes. Información que se contradice. La sensación de tener que hacerlo bien… sin saber exactamente qué significa eso ahora.</p>
+    <p>Vas adaptándote. Respondiendo. Tirando hacia adelante como puedes.</p>
+    <p>Pero por dentro… no hay una dirección clara que ordene todo eso.</p>
+    <p class="center-line">Y llega un punto en el que no es cansancio físico.<br/>Es la sensación de estar en medio de algo importante… sin un mapa real.</p>
+  </div>
+</section>
+
+<!-- ========== PNIE ========== -->
+<section class="pnie" id="enfoque">
+  <div class="narrow reveal">
+    <div class="eyebrow">Un enfoque diferente</div>
+    <h2>Tu cuerpo es un sistema.<br/>Nadie te lo estaba tratando así.</h2>
+    <p>La Psiconeuroinmunoendocrinología (PNIE) estudia la red entre el sistema nervioso, el inmune, el digestivo y el hormonal. No es medicina alternativa. Es la ciencia que explica por qué el miedo tiene consecuencias físicas, por qué la soledad inflama, por qué el sueño afecta a tus defensas. El cuerpo en tratamiento no es sólo un tumor que combatir: <strong>es un ecosistema que apoyar.</strong></p>
+    <p class="pull">“Tu oncólogo trata lo que tiene delante. La PNIE trabaja lo que lo rodea. Los dos son necesarios.”</p>
+    <p>La recuperación no depende de hacer más cosas. Depende de trabajar el sistema correcto, en el orden correcto. Eso es RENACE: cinco pilares integrados, durante 90 días.</p>
+  </div>
+  <div class="wrap">
+    <div class="pillars">
+      <div class="pill reveal"><div class="num">I</div><h4>Fisiológico</h4><p>Nutrición, suplementación personalizada, movimiento, sueño.</p></div>
+      <div class="pill reveal"><div class="num">II</div><h4>Mental</h4><p>Pensamientos, creencias, gestión cognitiva, enfoque.</p></div>
+      <div class="pill reveal"><div class="num">III</div><h4>Emocional</h4><p>Regulación emocional, resiliencia, relaciones clave.</p></div>
+      <div class="pill reveal"><div class="num">IV</div><h4>Social</h4><p>Entorno, vínculos, red de apoyo real.</p></div>
+      <div class="pill reveal"><div class="num">V</div><h4>Espiritual</h4><p>Propósito, sentido, valores, paz interior.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROGRAM ========== -->
+<section class="program" id="programa">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">El proceso</div>
+      <h2>90 días. Tres fases. Un sistema.</h2>
+      <p class="lead" style="max-width:48ch;margin:0 auto">Cada mes trabaja un plano diferente, en el orden que tiene sentido fisiológico y psicológico.</p>
+    </div>
+    <div class="months">
+      <div class="month month-1 reveal">
+        <div class="month-head">
+          <div class="month-num">Mes 1</div>
+          <h3>Bases fisiológicas</h3>
+          <p class="month-sub">Construir el suelo sobre el que todo lo demás se sostiene.</p>
+        </div>
+        <div class="month-body">
+          <div class="mod"><span class="mod-tag">Sem. 1</span><p><strong>Diagnóstico inicial.</strong> Hábitos, analíticas, objetivos personales.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 2</span><p><strong>Nutrición específica.</strong> Para tu tipo de cáncer y tu tratamiento.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 3</span><p><strong>Intestino y sistema inmune.</strong> El eje que más se descuida en oncología.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 4</span><p><strong>Sueño y movimiento.</strong> Por qué son tan importantes y cómo adaptarlos.</p></div>
+        </div>
+      </div>
+      <div class="month month-2 reveal">
+        <div class="month-head">
+          <div class="month-num">Mes 2</div>
+          <h3>Mente y emociones</h3>
+          <p class="month-sub">El sistema nervioso como aliado, no como obstáculo.</p>
+        </div>
+        <div class="month-body">
+          <div class="mod"><span class="mod-tag">Sem. 5</span><p><strong>Estrés y cortisol.</strong> Cómo afectan al sistema inmune y qué hacer.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 6</span><p><strong>Creencias y narrativa.</strong> Reencuadre cognitivo, coherencia cardíaca.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 7</span><p><strong>Gestión emocional.</strong> Procesar miedo, culpa e incertidumbre.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 8</span><p><strong>Vínculos y apoyo.</strong> Comunicar el diagnóstico, construir la red real.</p></div>
+        </div>
+      </div>
+      <div class="month month-3 reveal">
+        <div class="month-head">
+          <div class="month-num">Mes 3</div>
+          <h3>Integración y vida plena</h3>
+          <p class="month-sub">De sobrevivir el tratamiento a vivir después de él.</p>
+        </div>
+        <div class="month-body">
+          <div class="mod"><span class="mod-tag">Sem. 9</span><p><strong>Energía y movimiento.</strong> Protocolos reales para la fatiga oncológica.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 10</span><p><strong>Propósito y espiritualidad.</strong> Encontrar sentido cuando todo cambia.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 11</span><p><strong>Plan de mantenimiento.</strong> Los 5 pilares para el día a día posterior.</p></div>
+          <div class="mod"><span class="mod-tag">Sem. 12</span><p><strong>Cierre e integración.</strong> Revisión, celebración, opciones de continuidad.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INCLUDES ========== -->
+<section class="includes">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Lo que incluye</div>
+      <h2>Todo lo necesario. Nada que sobre.</h2>
+    </div>
+    <div class="inc-list">
+      <div class="inc reveal"><span class="mark">🎬</span><div><h4>12 módulos de vídeo</h4><p>Uno por semana, 15-25 min. Grabados y disponibles durante 6 meses post-programa.</p></div></div>
+      <div class="inc reveal"><span class="mark">👥</span><div><h4>Sesión grupal semanal en directo</h4><p>60 min con Q&amp;A real. Las sesiones se graban si no puedes asistir.</p></div></div>
+      <div class="inc reveal"><span class="mark">🌿</span><div><h4>Plan nutricional personalizado</h4><p>Específico para tu tipo de cáncer, fase de tratamiento y estado actual.</p></div></div>
+      <div class="inc reveal"><span class="mark">💊</span><div><h4>Plan de suplementación individualizado</h4><p>Diseñado a partir de tus analíticas y tratamiento. Seguro, basado en evidencia.</p></div></div>
+      <div class="inc reveal"><span class="mark">🧭</span><div><h4>3 sesiones individuales</h4><p>Una al mes, 30 min. Para ajustar el plan y atender lo que no cabe en el grupo.</p></div></div>
+      <div class="inc reveal"><span class="mark">💬</span><div><h4>Comunidad privada activa</h4><p>Personas en tu misma situación. No para informar: para acompañarse.</p></div></div>
+      <div class="inc reveal"><span class="mark">📋</span><div><h4>Materiales y recetarios</h4><p>Guías, plantillas y recursos descargables para cada módulo.</p></div></div>
+      <div class="inc reveal"><span class="mark">📊</span><div><h4>Evaluación inicial y final</h4><p>Para que veas, en datos reales, lo que ha cambiado en los 5 pilares.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AUTHOR ========== -->
+<section class="author" id="quico">
+  <div class="wrap">
+    <div class="author-i reveal">
+      <div class="author-photo">
+        <picture>
+          <source srcset="quico.webp" type="image/webp">
+          <img src="quico.jpg" alt="Quico — Dietista-nutricionista, OncoVitae" loading="lazy" onerror="this.style.display='none';this.parentNode.nextElementSibling.style.display='flex';" />
+        </picture>
+        <div class="ph-label" style="display:none">[ Retrato editorial ]</div>
+      </div>
+      <div class="author-c">
+        <div class="eyebrow">Quién diseña esto</div>
+        <h2>Quico</h2>
+        <div class="role">Dietista-nutricionista · PNIE · Oncología integrativa</div>
+        <p>Soy dietista-nutricionista especializado en PNIE y oncología. Llevo años acompañando a personas con enfermedades complejas. Creía conocer bien cómo funciona el cuerpo.</p>
+        <p>Hace 10 meses leí la palabra <strong>“linfoma”</strong> en mi propio TAC. Empezó la etapa más complicada de mi vida. Entiendo cómo funciona el estrés, el sistema nervioso, las hormonas, el sistema digestivo… Pero cuando estás tumbado en una cama enganchado a una <em>“bolsa de quimio”</em> toda la teoría se desvanece y aparece un sinfín de dudas, miedo, preguntas como: <em>¿por qué a mí?</em>, <em>¿qué he hecho yo para merecer esto?</em>…</p>
+        <p>Pasé 6 meses en quimioterapia. No sólo estudiando oncología: viviéndola. Terminé el tratamiento hace 6 meses. Y dediqué ese tiempo a construir la estructura que hubiera querido tener cuando me diagnosticaron, para vivir el proceso sin tanto sufrimiento.</p>
+        <div class="blockquote">“Conozco la evidencia científica. Y también sé cómo se siente estando tumbado en una cama planteándote tu existencia. Soy el profesional que le ha tocado pasar por el proceso desde dentro.”</div>
+        <div class="badges">
+          <span class="badge">Dietista-nutricionista colegiado</span>
+          <span class="badge">Especialización PNIE</span>
+          <span class="badge">Nutrición oncológica clínica</span>
+          <span class="badge">Superviviente de linfoma no Hodgkin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MID-PAGE CTA ========== -->
+<section class="mid-cta">
+  <h3>Si algo de lo que has leído te suena demasiado familiar...</h3>
+  <p>El siguiente paso es un formulario de 5 preguntas. Para ver si tiene sentido trabajar juntos.</p>
+  <a href="#precio" class="btn btn-gold">Ver cómo funciona RENACE</a>
+</section>
+
+<!-- ========== RESULTS ========== -->
+<section class="results">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Lo que puedes esperar</div>
+      <h2>Al terminar los 90 días, podrás:</h2>
+      <p class="lead" style="max-width:50ch;margin:0 auto">Esta es la edición fundadora. Quienes entran aquí no vienen por prueba social: vienen porque el programa tiene lógica, el diseño tiene rigor, y quien lo creó estuvo exactamente donde están ellos. Eso vale más que cualquier testimonio.</p>
+    </div>
+    <div class="res-g">
+      <div class="res-c reveal"><div class="ico">📍</div><p><strong>Ver con claridad dónde están tus brechas reales</strong> — no lo que crees que está pasando, sino lo que revela un diagnóstico honesto en los 5 pilares al inicio del proceso.</p></div>
+      <div class="res-c reveal"><div class="ico">🌿</div><p><strong>Comer para tu caso concreto</strong> — tu tipo de cáncer, tu tratamiento, tu estado actual. No una dieta anticáncer genérica que ignora tu protocolo.</p></div>
+      <div class="res-c reveal"><div class="ico">🧠</div><p><strong>Regular el sistema nervioso con herramientas reales</strong> que tienen impacto directo sobre el sistema inmune. No técnicas de relajación: mecanismos fisiológicos concretos.</p></div>
+      <div class="res-c reveal"><div class="ico">🤝</div><p><strong>Sentirte acompañado por personas que lo entienden de verdad</strong> — porque lo están viviendo también. Eso tiene un valor que ningún profesional, por bueno que sea, puede replicar.</p></div>
+      <div class="res-c reveal"><div class="ico">🧭</div><p><strong>Terminar con un plan que no depende del programa</strong> — los 5 pilares integrados en tu vida real, no en un documento que guardas y olvidas.</p></div>
+      <div class="res-c reveal"><div class="ico">💡</div><p><strong>Recuperar la sensación de que puedes actuar</strong> — que no eres sólo alguien a quien le pasan cosas, sino alguien que trabaja con lo que tiene. Eso cambia la biología de la recuperación.</p></div>
+    </div>
+    <div class="res-note reveal"><strong>Una nota de honestidad:</strong> RENACE no cura el cáncer. Ningún programa de acompañamiento puede hacer esa promesa y mantenerse en pie con integridad. Lo que sí hace es darte las mejores condiciones posibles para responder al tratamiento, tolerarlo y recuperarte. La diferencia entre tener un ecosistema bien apoyado y no tenerlo es real, medible y significativa.</div>
+  </div>
+</section>
+
+<!-- ========== WHOM ========== -->
+<section class="whom">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Honestidad ante todo</div>
+      <h2>Para quién es RENACE. Y para quién no.</h2>
+    </div>
+    <div class="whom-g">
+      <div class="whom-b yes reveal">
+        <h3><span class="ico">✓</span> RENACE es para ti si...</h3>
+        <ul>
+          <li>Estás en tratamiento activo o en remisión (menos de 24 meses).</li>
+          <li>Sientes que el sistema sanitario trata tu tumor pero no tu persona.</li>
+          <li>Tienes confusión alimentaria, fatiga, ansiedad o aislamiento que no sabes cómo gestionar.</li>
+          <li>Buscas un marco que integre todo, no piezas sueltas.</li>
+          <li>Puedes comprometerte 3-4 horas semanales durante 90 días.</li>
+          <li>Quieres recuperar la sensación de que puedes actuar en tu propia recuperación.</li>
+        </ul>
+      </div>
+      <div class="whom-b no reveal">
+        <h3><span class="ico">×</span> RENACE no es para ti si...</h3>
+        <ul>
+          <li>Buscas resultados sin proceso: una dieta milagrosa o una solución inmediata.</li>
+          <li>Quieres reemplazar el tratamiento médico convencional por algo “más natural”.</li>
+          <li>No puedes o no quieres comprometerte con el proceso en este momento.</li>
+          <li>Estás en una crisis aguda que requiere atención médica o psiquiátrica urgente.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section class="pricing" id="precio">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">La inversión</div>
+      <h2>Claro, directo, sin letra pequeña.</h2>
+      <p class="lead" style="max-width:42ch;margin:0 auto">Primera edición. Precio de lanzamiento.</p>
+    </div>
+
+    <div class="price-summary reveal">
+      <span class="label">📋 Lo que incluye RENACE</span>
+      <div class="grid2">
+        <span>12 módulos de vídeo</span>
+        <span>12 sesiones grupales en directo</span>
+        <span>Plan nutricional personalizado</span>
+        <span>Plan de suplementación individualizado</span>
+        <span>3 sesiones individuales de seguimiento</span>
+        <span>Comunidad privada + materiales</span>
+      </div>
+    </div>
+
+    <div class="price-card reveal">
+      <div class="edition">Precio de lanzamiento · Edición fundadora</div>
+      <h3>Programa RENACE — 3 meses completos</h3>
+      <div class="price-num"><span class="cur">€</span>697</div>
+      <div class="price-n">Pago único · (Ediciones siguientes: 897€)</div>
+      <div class="price-pay">¿Prefieres fraccionar? <strong>3 cuotas de 250€</strong> sin intereses.</div>
+      <div class="price-ul">
+        <h4>Todo lo que incluye</h4>
+        <ul>
+          <li>12 módulos de vídeo + acceso 6 meses post-programa.</li>
+          <li>12 sesiones grupales en directo (una por semana).</li>
+          <li>Plan nutricional personalizado para tu cáncer y tratamiento.</li>
+          <li>Plan de suplementación individualizado y seguro.</li>
+          <li>3 sesiones individuales de seguimiento (una al mes).</li>
+          <li>Comunidad privada activa durante 90 días.</li>
+          <li>Guías, recetarios y materiales descargables.</li>
+          <li>Evaluación inicial y final de los 5 pilares.</li>
+        </ul>
+      </div>
+      <a href="https://tally.so/r/vGx5gQ" target="_blank" rel="noopener" class="btn btn-gold">Solicitar mi plaza en RENACE</a>
+      <div class="price-cta-note">Rellenas el formulario de valoración. Quico te responde en menos de 48h.</div>
+      <div class="selection-note"><strong>Proceso de selección previo.</strong> Antes de confirmar la plaza hay un breve formulario de valoración. No es una barrera: es para asegurarnos de que RENACE es lo que necesitas ahora mismo y de que puedes comprometerte con el proceso. Buscamos personas decididas.</div>
+      <div class="spots">⚡ <span>Máximo <strong>12 plazas</strong> · Inicio: <strong>Lunes 01/06/2026</strong></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HONESTY ========== -->
+<section class="honesty">
+  <div class="narrow reveal">
+    <div class="eyebrow">Un momento de honestidad</div>
+    <h2>Lo que RENACE requiere de ti</h2>
+    <div class="h-box">3-4 horas semanales durante 90 días. <strong>No siempre en los días con más energía.</strong> Habrá semanas difíciles. El proceso está diseñado para eso, pero no puede hacerlo por ti.</div>
+    <p>El comparado con qué real no es este programa frente a no hacer nada. Es seguir seis meses más sin un plan integrado, sin alguien que conozca tu contexto específico, sin personas en tu misma situación. <strong>¿Cuánto te cuesta eso?</strong></p>
+    <p>Funciona cuando alguien decide, en medio de una situación difícil, que puede hacer algo activo con lo que tiene. Si ese eres tú ahora mismo, tiene sentido. Si no lo es todavía, sigue leyendo lo que comparto y espera al momento en que lo esté.</p>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2>Lo que quieres saber antes de decidir</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false" onclick="fq(this)">
+          <span>¿Es compatible con mi tratamiento médico actual?</span>
+          <span class="ic">+</span>
+        </button>
+        <div class="faq-a"><p>Sí. RENACE trabaja junto al tratamiento, nunca en sustitución. El plan nutricional y de suplementación se diseñan teniendo en cuenta tu protocolo médico. Si es necesario, coordino con tu equipo oncológico.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false" onclick="fq(this)">
+          <span>¿Podré seguirlo si tengo poca energía por la quimioterapia?</span>
+          <span class="ic">+</span>
+        </button>
+        <div class="faq-a"><p>Sí. Módulos de 15-25 min, sesiones grabadas, ritmo adaptado a la realidad del tratamiento. Si una semana es difícil, el proceso te espera.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false" onclick="fq(this)">
+          <span>¿Para qué tipos de cáncer está pensado?</span>
+          <span class="ic">+</span>
+        </button>
+        <div class="faq-a"><p>El marco de los 5 pilares es aplicable independientemente del tipo de cáncer. El plan nutricional y de suplementación sí se personalizan para tu diagnóstico específico: mama, colon, linfoma, próstata, ovario, pulmón…</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false" onclick="fq(this)">
+          <span>¿Cómo funciona el proceso de selección previo?</span>
+          <span class="ic">+</span>
+        </button>
+        <div class="faq-a"><p>Es un formulario breve: tu diagnóstico, momento actual, qué buscas en el programa y cuánto tiempo puedes dedicar. No es un filtro complicado. Es una conversación honesta para confirmar que RENACE es lo que necesitas ahora mismo. Si no lo es, te lo digo directamente.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false" onclick="fq(this)">
+          <span>¿Qué diferencia esto de ir a un nutricionista?</span>
+          <span class="ic">+</span>
+        </button>
+        <div class="faq-a"><p>Tres cosas: la especialización (oncología integrativa con base PNIE, no nutrición general), el marco de los 5 pilares (no sólo dieta, sino sistema nervioso, emociones, entorno y propósito), y la comunidad (compartir el proceso con personas en tu misma situación no tiene equivalente en consulta individual).</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false" onclick="fq(this)">
+          <span>¿Por qué sólo 12 personas por edición?</span>
+          <span class="ic">+</span>
+        </button>
+        <div class="faq-a"><p>Porque el acompañamiento que justifica este programa no escala. Con 12 personas puedo dar atención real, conocer el contexto de cada uno y ajustar cuando hace falta. Calidad sobre cantidad.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false" onclick="fq(this)">
+          <span>¿Qué pasa si después de empezar no es lo que esperaba?</span>
+          <span class="ic">+</span>
+        </button>
+        <div class="faq-a"><p>El proceso de selección previo existe exactamente para eso: para que sólo entre quien tiene claro qué esperar y puede comprometerse de verdad. Ese filtro protege al participante tanto como al programa. Si después de esa conversación decides entrar, es porque tienes toda la información. No existe política de devolución porque el programa no se vende como algo que “se prueba” — se vende como un proceso que requiere compromiso real desde el primer día.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FINAL ========== -->
+<section class="final">
+  <div class="wrap reveal" style="max-width:700px">
+    <h2>Has llegado hasta aquí. Eso ya te dice algo. <em>El siguiente paso es pequeño.</em></h2>
+    <p>Si reconoces en estas páginas algo de lo que estás viviendo, tienes toda la información que necesitas para decidir. No hay más que leer. Hay que actuar, o no. Un formulario de 5 preguntas. Quico lo lee personalmente, te responde antes de 48h, y desde ahí se decide juntos si tiene sentido.</p>
+    <a href="https://tally.so/r/vGx5gQ" target="_blank" rel="noopener" class="btn btn-gold">Enviar mi solicitud a RENACE</a>
+    <div class="meta">Primera edición · 12 plazas · Inicio 01.06.2026</div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="brand">Onco<span>Vitae</span></div>
+  <p>Nutrición oncológica integrativa · PNIE · Los 5 pilares de salud</p>
+  <div class="foot-links">
+    <a href="mailto:hola@oncovitae.com">hola@oncovitae.com</a>
+    <a href="https://instagram.com/oncovitae">@oncovitae</a>
+  </div>
+  <p class="small">RENACE es un programa de acompañamiento nutricional e integrativo. No sustituye al tratamiento médico.</p>
+  <p class="small">© 2026 OncoVitae. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  // Smooth scroll for in-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+
+  // FAQ accordion
+  function fq(btn){
+    const item=btn.closest('.faq-item');
+    const open=item.dataset.open==='true';
+    item.dataset.open=open?'false':'true';
+    btn.setAttribute('aria-expanded',open?'false':'true');
+  }
+
+  // Reveal on scroll
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
